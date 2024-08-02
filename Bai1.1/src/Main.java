@@ -1,15 +1,43 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.Scanner;
+ public class Main{
+     public static void main(String[] args) {
+         final String square = "square";
+         final String triangle = "triangle";
+         final String circle = "circle";
+         System.out.print("Nhập hình dạng của viên gạch: ");
+          Scanner in = new Scanner(System.in);
+          String type = in.nextLine();
+          double area = 0.0;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
-    }
-}
+          if(type.equals(square)){
+              System.out.print("Nhập độ dài của cạnh: ");
+              int a = in.nextInt();
+              area = Math.pow(a,2);
+              System.out.println("Diện tích viên gạch là: " + area);
+          }
+          else if(type.equals(triangle)){
+              System.out.print("Nhập cạnh của viên gạch: ");
+              int x = in.nextInt(); int y= in.nextInt();
+              int z = in.nextInt();
+              double p = (double)(x+y+z)/2;
+              area = Math.sqrt(p*(p-x)*(p-y)*(p-z));
+              System.out.printf("Diện tích của viên gạch là: %.1f", area );
+          }
+          else if(type.equals(circle)){
+              int r ;
+              do{
+                  System.out.print("Nhập bán kính viên gạch: ");
+                  r = in.nextInt();
+                  if(r <= 0){
+                      System.out.print("Nhập lại bán kính viên gạch: ");
+                  }
+              } while(r <= 0);
+              area = Math.PI*Math.pow(r,2);
+              System.out.printf("Diện tích viên gạch là: %.2f", area);
+          }
+          else{
+              System.out.println("Hình dạng viên gạch không hợp lệ! ");
+              System.exit(0);
+          }
+     }
+ }
